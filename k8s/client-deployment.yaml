@@ -1,0 +1,37 @@
+# Deployment for client
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      component: web
+  template:               # this configures the pod
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+---
+# Service for client
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-cluster-ip-service
+spec: 
+  type: ClusterIP
+  selector:                   # which pod we are talking to
+    component: web
+  ports:
+    - port: 3000              # ingress
+      targetPort: 3000
