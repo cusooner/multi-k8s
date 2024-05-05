@@ -23,6 +23,10 @@ spec:
           image:  postgres 
           ports:
             - containerPort: 5432
+          volumeMounts:
+            - name:  postgres-storage # this is the name of the volume
+              mountPath: /var/lib/postgresql/data # this is the path inside the container
+              subPath: postgres # this is the name of the folder inside the volume
 
 ---
 
