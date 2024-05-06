@@ -20,7 +20,19 @@ spec:
 
       containers:
         - name: postgres
-          image:  postgres 
+          image:  postgres
+          resources:
+            limits:
+              memory: "1G"
+              cpu: "500m" # 500 millicpu (.5 cpu)
+
+          env:
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
+
           ports:
             - containerPort: 5432
           volumeMounts:

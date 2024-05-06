@@ -18,10 +18,31 @@ spec:
           image: stephengrider/multi-server # this is the image we want to use
           ports:
             - containerPort: 5000 # this is the port we want to expose
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: '6379'
+            - name: PGUSER
+              value: postgres
+            - name: PGHOST
+              value: postgres-cluster-ip-service
+            - name: PGPORT
+              value: 5432'
+            - name: PGDATABASE
+              value: postgres
+
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword 
+                  key: PGPASSWORD
+
           resources:
             limits:
               memory: "256Mi" # 256 MB
               cpu: "500m" # 500 millicpu (.5 cpu)
+
 ---
 # Service for server
 apiVersion: v1
