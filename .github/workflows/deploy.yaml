@@ -39,21 +39,21 @@ jobs:
           cluster_name: multi-kulti
           location: europe-southwest1-c
  
-      - name: Build
-        run: |-
-          docker build -t cygnetops/multi-client-k8s-gh:latest -t cygnetops/multi-client-k8s-gh:${{ env.SHA }} -f ./client/Dockerfile ./client
-          docker build -t cygnetops/multi-server-k8s-pgfix-gh:latest -t cygnetops/multi-server-k8s-pgfix-gh:${{ env.SHA }} -f ./server/Dockerfile ./server
-          docker build -t cygnetops/multi-worker-k8s-gh:latest -t cygnetops/multi-worker-k8s-gh:${{ env.SHA }} -f ./worker/Dockerfile ./worker
+      # - name: Build
+      #   run: |-
+      #     docker build -t cygnetops/multi-client-k8s-gh:latest -t cygnetops/multi-client-k8s-gh:${{ env.SHA }} -f ./client/Dockerfile ./client
+      #     docker build -t cygnetops/multi-server-k8s-pgfix-gh:latest -t cygnetops/multi-server-k8s-pgfix-gh:${{ env.SHA }} -f ./server/Dockerfile ./server
+      #     docker build -t cygnetops/multi-worker-k8s-gh:latest -t cygnetops/multi-worker-k8s-gh:${{ env.SHA }} -f ./worker/Dockerfile ./worker
  
-      - name: Push
-        run: |-
-          docker push cygnetops/multi-client-k8s-gh:latest
-          docker push cygnetops/multi-server-k8s-pgfix-gh:latest
-          docker push cygnetops/multi-worker-k8s-gh:latest
+      # - name: Push
+      #   run: |-
+      #     docker push cygnetops/multi-client-k8s-gh:latest
+      #     docker push cygnetops/multi-server-k8s-pgfix-gh:latest
+      #     docker push cygnetops/multi-worker-k8s-gh:latest
  
-          docker push cygnetops/multi-client-k8s-gh:${{ env.SHA }}
-          docker push cygnetops/multi-server-k8s-pgfix-gh:${{ env.SHA }}
-          docker push cygnetops/multi-worker-k8s-gh:${{ env.SHA }}
+      #     docker push cygnetops/multi-client-k8s-gh:${{ env.SHA }}
+      #     docker push cygnetops/multi-server-k8s-pgfix-gh:${{ env.SHA }}
+      #     docker push cygnetops/multi-worker-k8s-gh:${{ env.SHA }}
  
       - name: Apply
         run: |-
