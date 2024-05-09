@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: server # this is the name of the container
-          image: stephengrider/multi-server # this is the image we want to use
+          image: rallycoding/multi-server # this is the image we want to use
           ports:
             - containerPort: 5000 # this is the port we want to expose
           env:
