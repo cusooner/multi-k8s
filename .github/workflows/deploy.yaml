@@ -37,8 +37,8 @@ jobs:
       - name: Get Credentials
         uses: google-github-actions/get-gke-credentials@v0
         with:
-          cluster_name: autopilot-cluster-1
-          location: europe-central2 
+          cluster_name: cluster-1
+          location: us-central1-c 
  
       # - name: Build
       #   run: |-
